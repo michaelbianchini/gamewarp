@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Scenes/inside_broom_closet.unity
+  isLoaded: 1
+  isActive: 1
