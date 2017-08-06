@@ -77,13 +77,13 @@ namespace IVR {
                 if (characterRigidbody != null)
                     characterTransform = characterRigidbody.GetComponent<Transform>();
 
-                if (leftArm == null)
-                    leftArm = new ArmMovements(ivr, ArmMovements.BodySide.Left, this);
-                leftArm.Initialize(ivr, ArmMovements.BodySide.Left, this);
+//                if (leftArm == null)
+//                    leftArm = new ArmMovements(ivr, ArmMovements.BodySide.Left, this);
+//                leftArm.Initialize(ivr, ArmMovements.BodySide.Left, this);
 
-                if (rightArm == null)
-                    rightArm = new ArmMovements(ivr, ArmMovements.BodySide.Right, this);
-                rightArm.Initialize(ivr, ArmMovements.BodySide.Right, this);
+//                if (rightArm == null)
+//                    rightArm = new ArmMovements(ivr, ArmMovements.BodySide.Right, this);
+//                rightArm.Initialize(ivr, ArmMovements.BodySide.Right, this);
 
                 Transform neck, spine, hips;
 
@@ -102,14 +102,14 @@ namespace IVR {
                 leftLeg = new LegMovements(ArmMovements.BodySide.Left, animator, hipTarget);
                 rightLeg = new LegMovements(ArmMovements.BodySide.Right, animator, hipTarget);
 
-                if (rightHandTarget != null) {
-                    rightHandOTarget = rightHandTarget;
-                }
-
-                if (leftHandTarget != null) {
-                    leftHandOTarget = leftHandTarget;
-                }
-
+ //               if (rightHandTarget != null) {
+ //                   rightHandOTarget = rightHandTarget;
+ //               }
+//
+//                if (leftHandTarget != null) {
+//                    leftHandOTarget = leftHandTarget;
+//                }
+//
                 if (headTarget == null && enableTorso) {
                     GameObject neckTargetGO = new GameObject("Neck_Target");
                     headTarget = neckTargetGO.transform;
@@ -118,40 +118,40 @@ namespace IVR {
                     headTarget.rotation = characterTransform.rotation;
                 }
 
-                if (enableLegs) {
-                    if (rightFootTarget == null) {
-                        GameObject rightFootTargetGO = new GameObject("Foot_R_Target");
-                        rightFootTarget = rightFootTargetGO.transform;
-                        rightFootTarget.parent = characterTransform;
-                        rightFootTarget.position = rightLeg.foot.position;
-                        rightFootTarget.rotation = characterTransform.rotation;
-                    }
-
-                    if (leftFootTarget == null) {
-                        GameObject leftFootTargetGO = new GameObject("Foot_L_Target");
-                        leftFootTarget = leftFootTargetGO.transform;
-                        leftFootTarget.parent = characterTransform;
-                        leftFootTarget.position = leftLeg.foot.position;
-                        leftFootTarget.rotation = characterTransform.rotation;
-                    }
-                }
-
-
-                if (IsInTPose(leftArm, rightArm)) {
-                    CalculateFromNormTPose(leftArm, rightArm);
-                } else {
-                    CalculateFromNormTracking(leftArm, rightArm, leftHandTarget, rightHandTarget);
-                }
-
-                if (leftLeg.IsInTPose())
-                    leftLeg.FromNormTPose();
-                else
-                    leftLeg.FromNormTracking(leftFootTarget);
-
-                if (rightLeg.IsInTPose())
-                    rightLeg.FromNormTPose();
-                else
-                    rightLeg.FromNormTracking(rightFootTarget);
+//                if (enableLegs) {
+//                    if (rightFootTarget == null) {
+//                        GameObject rightFootTargetGO = new GameObject("Foot_R_Target");
+//                        rightFootTarget = rightFootTargetGO.transform;
+//                        rightFootTarget.parent = characterTransform;
+//                        rightFootTarget.position = rightLeg.foot.position;
+//                        rightFootTarget.rotation = characterTransform.rotation;
+//                    }
+//
+//                    if (leftFootTarget == null) {
+//                        GameObject leftFootTargetGO = new GameObject("Foot_L_Target");
+//                        leftFootTarget = leftFootTargetGO.transform;
+//                        leftFootTarget.parent = characterTransform;
+//                        leftFootTarget.position = leftLeg.foot.position;
+//                        leftFootTarget.rotation = characterTransform.rotation;
+//                    }
+//                }
+//
+//
+//                if (IsInTPose(leftArm, rightArm)) {
+//                    CalculateFromNormTPose(leftArm, rightArm);
+//                } else {
+//                    CalculateFromNormTracking(leftArm, rightArm, leftHandTarget, rightHandTarget);
+//                }
+//
+//                if (leftLeg.IsInTPose())
+//                    leftLeg.FromNormTPose();
+//                else
+//                    leftLeg.FromNormTracking(leftFootTarget);
+//
+//                if (rightLeg.IsInTPose())
+//                    rightLeg.FromNormTPose();
+//                else
+//                    rightLeg.FromNormTracking(rightFootTarget);
             }
         }
 
@@ -176,33 +176,33 @@ namespace IVR {
         
         public void UpdateBodyMovements() {
             if (torso.userNeckTarget) {
-                if (enableTorso)
-                    torso.CalculateHorizontal(headTarget);
-
-                if (enableLegs)
-                    torso.CalculateVertical(headTarget);
-
-                leftArm.Calculate(leftHandTarget);
-                rightArm.Calculate(rightHandTarget);
-
+//                if (enableTorso)
+//                    torso.CalculateHorizontal(headTarget);
+//
+//                if (enableLegs)
+//                    torso.CalculateVertical(headTarget);
+//
+//                leftArm.Calculate(leftHandTarget);
+//                rightArm.Calculate(rightHandTarget);
+//
                 CalculateHeadOrientation(torso.neck, headTarget);
-            } else {
-                if (bendAngle <= 0 && !crouching) {
-                    leftArm.Calculate(leftHandTarget);
-                    rightArm.Calculate(rightHandTarget);
-                }
-
-                if (enableTorso && !crouching)
-                    bendAngle = torso.AutoHorizontal(rightHandOTarget, rightHandTarget, rightArm, leftHandOTarget, leftHandTarget, leftArm, headTarget);
-
-                if (enableLegs && bendAngle >= maxHipAngle)
-                    crouching = torso.AutoVertical(rightHandOTarget, rightHandTarget, rightArm, leftHandOTarget, leftHandTarget, leftArm, headTarget);
+//            } else {
+//                if (bendAngle <= 0 && !crouching) {
+//                    leftArm.Calculate(leftHandTarget);
+//                    rightArm.Calculate(rightHandTarget);
+//                }
+//
+//                if (enableTorso && !crouching)
+//                    bendAngle = torso.AutoHorizontal(rightHandOTarget, rightHandTarget, rightArm, leftHandOTarget, leftHandTarget, leftArm, headTarget);
+//
+//                if (enableLegs && bendAngle >= maxHipAngle)
+//                    crouching = torso.AutoVertical(rightHandOTarget, rightHandTarget, rightArm, leftHandOTarget, leftHandTarget, leftArm, headTarget);
             }
 
-            if (enableLegs) {
-                rightLeg.Calculate(rightFootTarget.transform);
-                leftLeg.Calculate(leftFootTarget.transform);
-            }
+//            if (enableLegs) {
+//                rightLeg.Calculate(rightFootTarget.transform);
+//                leftLeg.Calculate(leftFootTarget.transform);
+//            }
         }
 
         private Vector3 minHeadAngles = new Vector3(-60, -90, -45);

@@ -20,25 +20,25 @@ namespace IVR {
                 if (defaultHead != null)
                     DestroyImmediate(defaultHead);
 
-                IVR_AnimatorHand defaultLeftHand = ivr.leftHandTarget.GetComponent<IVR_AnimatorHand>();
-                if (defaultLeftHand != null)
-                    DestroyImmediate(defaultLeftHand);
-
-                IVR_AnimatorHand defaultRightHand = ivr.rightHandTarget.GetComponent<IVR_AnimatorHand>();
-                if (defaultRightHand != null)
-                    DestroyImmediate(defaultRightHand);
-
-                IVR_AnimatorHip defaultHip = ivr.hipTarget.GetComponent<IVR_AnimatorHip>();
-                if (defaultHip != null)
-                    DestroyImmediate(defaultHip);
-
-                IVR_AnimatorFoot defaultLeftFoot = ivr.leftFootTarget.GetComponent<IVR_AnimatorFoot>();
-                if (defaultLeftFoot != null)
-                    DestroyImmediate(defaultLeftFoot);
-
-                IVR_AnimatorFoot defaultRightFoot = ivr.rightFootTarget.GetComponent<IVR_AnimatorFoot>();
-                if (defaultRightFoot != null)
-                    DestroyImmediate(defaultRightFoot);
+//                IVR_AnimatorHand defaultLeftHand = ivr.leftHandTarget.GetComponent<IVR_AnimatorHand>();
+//                if (defaultLeftHand != null)
+//                    DestroyImmediate(defaultLeftHand);
+//
+//                IVR_AnimatorHand defaultRightHand = ivr.rightHandTarget.GetComponent<IVR_AnimatorHand>();
+//                if (defaultRightHand != null)
+//                    DestroyImmediate(defaultRightHand);
+//
+//                IVR_AnimatorHip defaultHip = ivr.hipTarget.GetComponent<IVR_AnimatorHip>();
+//                if (defaultHip != null)
+//                    DestroyImmediate(defaultHip);
+//
+//                IVR_AnimatorFoot defaultLeftFoot = ivr.leftFootTarget.GetComponent<IVR_AnimatorFoot>();
+//                if (defaultLeftFoot != null)
+//                    DestroyImmediate(defaultLeftFoot);
+//
+//                IVR_AnimatorFoot defaultRightFoot = ivr.rightFootTarget.GetComponent<IVR_AnimatorFoot>();
+//                if (defaultRightFoot != null)
+//                    DestroyImmediate(defaultRightFoot);
             }
         }
     }

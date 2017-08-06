@@ -119,16 +119,16 @@ namespace IVR {
 
             foreach (IVR_Controller c in headControllers)
                 c.StartController(this);
-            foreach (IVR_Controller c in leftHandControllers)
-                c.StartController(this);
-            foreach (IVR_Controller c in rightHandControllers)
-                c.StartController(this);
-            foreach (IVR_Controller c in hipControllers)
-                c.StartController(this);
-            foreach (IVR_Controller c in leftFootControllers)
-                c.StartController(this);
-            foreach (IVR_Controller c in rightFootControllers)
-                c.StartController(this);
+//            foreach (IVR_Controller c in leftHandControllers)
+//                c.StartController(this);
+//            foreach (IVR_Controller c in rightHandControllers)
+//                c.StartController(this);
+//            foreach (IVR_Controller c in hipControllers)
+//                c.StartController(this);
+//            foreach (IVR_Controller c in leftFootControllers)
+//                c.StartController(this);
+//            foreach (IVR_Controller c in rightFootControllers)
+//                c.StartController(this);
 
             bodyMovements = GetComponent<IVR_BodyMovements>();
             if (bodyMovements != null)
@@ -136,10 +136,10 @@ namespace IVR {
 
             if (headMovements && headMovements.enabled)
                 headMovements.StartMovements(this);
-            if (leftHandMovements != null && leftHandMovements.enabled)
-                leftHandMovements.StartMovements(this);
-            if (rightHandMovements != null && rightHandMovements.enabled)
-                rightHandMovements.StartMovements(this);
+//            if (leftHandMovements != null && leftHandMovements.enabled)
+//               leftHandMovements.StartMovements(this);
+//            if (rightHandMovements != null && rightHandMovements.enabled)
+//                rightHandMovements.StartMovements(this);
 
             InitGroundcheck();
         }
@@ -212,14 +212,14 @@ namespace IVR {
         }
 
         private void UpdateControllers() {
-            if (leftHandMovements != null)
-                leftHandMovements.selectedController = (IVR_HandController)UpdateController(leftHandControllers, leftHandMovements.selectedController);
-            if (rightHandMovements != null)
-                rightHandMovements.selectedController = (IVR_HandController)UpdateController(rightHandControllers, rightHandMovements.selectedController);
-
-            hipController = UpdateController(hipControllers, hipController);
-            leftFootController = UpdateController(leftFootControllers, leftFootController);
-            rightFootController = UpdateController(rightFootControllers, rightFootController);
+//            if (leftHandMovements != null)
+//                leftHandMovements.selectedController = (IVR_HandController)UpdateController(leftHandControllers, leftHandMovements.selectedController);
+//            if (rightHandMovements != null)
+//                rightHandMovements.selectedController = (IVR_HandController)UpdateController(rightHandControllers, rightHandMovements.selectedController);
+//
+//            hipController = UpdateController(hipControllers, hipController);
+//            leftFootController = UpdateController(leftFootControllers, leftFootController);
+//            rightFootController = UpdateController(rightFootControllers, rightFootController);
             // Head needs to be after hands because of traditional controller.
             headController = UpdateController(headControllers, headController);
         }

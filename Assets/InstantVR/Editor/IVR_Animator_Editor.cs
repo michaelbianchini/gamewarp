@@ -28,25 +28,25 @@ namespace IVR {
                 if (animatorHead != null)
                     DestroyImmediate(animatorHead, true);
 
-                animatorLeftHand = ivr.leftHandTarget.GetComponent<IVR_AnimatorHand>();
-                if (animatorLeftHand != null)
-                    DestroyImmediate(animatorLeftHand, true);
-
-                animatorRightHand = ivr.rightHandTarget.GetComponent<IVR_AnimatorHand>();
-                if (animatorRightHand != null)
-                    DestroyImmediate(animatorRightHand, true);
-
-                animatorHip = ivr.hipTarget.GetComponent<IVR_AnimatorHip>();
-                if (animatorHip != null)
-                    DestroyImmediate(animatorHip, true);
-
-                animatorLeftFoot = ivr.leftFootTarget.GetComponent<IVR_AnimatorFoot>();
-                if (animatorLeftFoot != null)
-                    DestroyImmediate(animatorLeftFoot, true);
-
-                animatorRightFoot = ivr.rightFootTarget.GetComponent<IVR_AnimatorFoot>();
-                if (animatorRightFoot != null)
-                    DestroyImmediate(animatorRightFoot, true);
+//                animatorLeftHand = ivr.leftHandTarget.GetComponent<IVR_AnimatorHand>();
+//                if (animatorLeftHand != null)
+//                    DestroyImmediate(animatorLeftHand, true);
+//
+//                animatorRightHand = ivr.rightHandTarget.GetComponent<IVR_AnimatorHand>();
+//                if (animatorRightHand != null)
+//                    DestroyImmediate(animatorRightHand, true);
+//
+//                animatorHip = ivr.hipTarget.GetComponent<IVR_AnimatorHip>();
+//                if (animatorHip != null)
+//                    DestroyImmediate(animatorHip, true);
+//
+//                animatorLeftFoot = ivr.leftFootTarget.GetComponent<IVR_AnimatorFoot>();
+//                if (animatorLeftFoot != null)
+//                    DestroyImmediate(animatorLeftFoot, true);
+//
+//                animatorRightFoot = ivr.rightFootTarget.GetComponent<IVR_AnimatorFoot>();
+//                if (animatorRightFoot != null)
+//                    DestroyImmediate(animatorRightFoot, true);
 
             }
         }
@@ -65,35 +65,35 @@ namespace IVR {
                     animatorHead.extension = ivranimator;
                 }
 
-                animatorLeftHand = ivr.leftHandTarget.GetComponent<IVR_AnimatorHand>();
-                if (animatorLeftHand == null) {
-                    animatorLeftHand = ivr.leftHandTarget.gameObject.AddComponent<IVR_AnimatorHand>();
-                    animatorLeftHand.extension = ivranimator;
-                }
-
-                animatorRightHand = ivr.rightHandTarget.GetComponent<IVR_AnimatorHand>();
-                if (animatorRightHand == null) {
-                    animatorRightHand = ivr.rightHandTarget.gameObject.AddComponent<IVR_AnimatorHand>();
-                    animatorRightHand.extension = ivranimator;
-                }
-
-                animatorHip = ivr.hipTarget.GetComponent<IVR_AnimatorHip>();
-                if (animatorHip == null) {
-                    animatorHip = ivr.hipTarget.gameObject.AddComponent<IVR_AnimatorHip>();
-                    animatorHip.extension = ivranimator;
-                }
-
-                animatorLeftFoot = ivr.leftFootTarget.GetComponent<IVR_AnimatorFoot>();
-                if (animatorLeftFoot == null) {
-                    animatorLeftFoot = ivr.leftFootTarget.gameObject.AddComponent<IVR_AnimatorFoot>();
-                    animatorLeftFoot.extension = ivranimator;
-                }
-
-                animatorRightFoot = ivr.rightFootTarget.GetComponent<IVR_AnimatorFoot>();
-                if (animatorRightFoot == null) {
-                    animatorRightFoot = ivr.rightFootTarget.gameObject.AddComponent<IVR_AnimatorFoot>();
-                    animatorRightFoot.extension = ivranimator;
-                }
+//                animatorLeftHand = ivr.leftHandTarget.GetComponent<IVR_AnimatorHand>();
+//                if (animatorLeftHand == null) {
+//                    animatorLeftHand = ivr.leftHandTarget.gameObject.AddComponent<IVR_AnimatorHand>();
+//                    animatorLeftHand.extension = ivranimator;
+//                }
+//
+//                animatorRightHand = ivr.rightHandTarget.GetComponent<IVR_AnimatorHand>();
+//                if (animatorRightHand == null) {
+//                    animatorRightHand = ivr.rightHandTarget.gameObject.AddComponent<IVR_AnimatorHand>();
+//                    animatorRightHand.extension = ivranimator;
+//                }
+//
+//                animatorHip = ivr.hipTarget.GetComponent<IVR_AnimatorHip>();
+//                if (animatorHip == null) {
+//                    animatorHip = ivr.hipTarget.gameObject.AddComponent<IVR_AnimatorHip>();
+//                    animatorHip.extension = ivranimator;
+//                }
+//
+//                animatorLeftFoot = ivr.leftFootTarget.GetComponent<IVR_AnimatorFoot>();
+//                if (animatorLeftFoot == null) {
+//                    animatorLeftFoot = ivr.leftFootTarget.gameObject.AddComponent<IVR_AnimatorFoot>();
+//                    animatorLeftFoot.extension = ivranimator;
+//                }
+//
+//                animatorRightFoot = ivr.rightFootTarget.GetComponent<IVR_AnimatorFoot>();
+//                if (animatorRightFoot == null) {
+//                    animatorRightFoot = ivr.rightFootTarget.gameObject.AddComponent<IVR_AnimatorFoot>();
+//                    animatorRightFoot.extension = ivranimator;
+//                }
 
                 IVR_Extension[] extensions = ivr.GetComponents<IVR_Extension>();
                 if (ivranimator.priority == -1)

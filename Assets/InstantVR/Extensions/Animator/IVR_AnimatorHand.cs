@@ -47,21 +47,21 @@ namespace IVR {
 
         }
 
-        public override void UpdateController() {
-            if (this.enabled) {
-                if (followHip) {
-                    FollowHip();
-                    tracking = animatorHip.isTracking();
-                    if (armSwing && footController != null)
-                        ArmSwingAnimation();
-                } else {
-                    tracking = true;
-                }
-
-                base.UpdateController();
-            } else
-                tracking = false;
-        }
+//        public override void UpdateController() {
+//           if (this.enabled) {
+//                if (followHip) {
+//                    FollowHip();
+//                    tracking = animatorHip.isTracking();
+//                    if (armSwing && footController != null)
+//                        ArmSwingAnimation();
+//                } else {
+//                    tracking = true;
+//                }
+//
+//                base.UpdateController();
+//            } else
+//                tracking = false;
+//        }
 
         private void FollowHip() {
             Vector3 hipLocalPosition = Quaternion.Inverse(ivr.transform.rotation) * (ivr.hipTarget.position - ivr.transform.position);
