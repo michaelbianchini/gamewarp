@@ -199,6 +199,23 @@ namespace IVR {
             LateUpdateExtensions();
             Controllers.EndFrame();
             inputDirection = Vector3.zero;
+
+            if (characterTransform != null) {
+                if (headMovements && headMovements.enabled)
+                    headMovements.UpdateMovements();
+                if (bodyMovements != null)
+                    bodyMovements.UpdateBodyMovements();
+            }
+
+            CalculateSpeed();
+            PlaceBodyCapsule();
+            DetermineCollision();
+            if (useGravity)
+                groundCheck();
+
+//            UpdateMovements();
+		
+
         }
 
         private void UpdateExtensions() {

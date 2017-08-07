@@ -13,10 +13,10 @@ namespace IVR {
 
     public class IVR_TraditionalHand : IVR_HandController {
 
+//        [HideInInspector]
+//        private IVR_HandMovementsBase handMovements;
         [HideInInspector]
-        private IVR_HandMovementsBase handMovements;
-        [HideInInspector]
-	  private IVR_AnimatorHand handAnimator;
+        private IVR_AnimatorHand handAnimator;
 
         [HideInInspector]
         private bool joystick2available;

@@ -40,13 +40,13 @@ namespace IVR {
             if (traditionalHead != null)
                 DestroyImmediate(traditionalHead);
 
-//            IVR_TraditionalHand traditionalLeftHand = ivr.leftHandTarget.GetComponent<IVR_TraditionalHand>();
-//            if (traditionalLeftHand != null)
-//                DestroyImmediate(traditionalLeftHand);
-//
-//            IVR_TraditionalHand traditionalRightHand = ivr.rightHandTarget.GetComponent<IVR_TraditionalHand>();
-//            if (traditionalRightHand != null)
-//                DestroyImmediate(traditionalRightHand);
+            IVR_TraditionalHand traditionalLeftHand = ivr.leftHandTarget.GetComponent<IVR_TraditionalHand>();
+            if (traditionalLeftHand != null)
+                DestroyImmediate(traditionalLeftHand);
+
+            IVR_TraditionalHand traditionalRightHand = ivr.rightHandTarget.GetComponent<IVR_TraditionalHand>();
+            if (traditionalRightHand != null)
+                DestroyImmediate(traditionalRightHand);
         }
 
         private ControllerInput controller;
