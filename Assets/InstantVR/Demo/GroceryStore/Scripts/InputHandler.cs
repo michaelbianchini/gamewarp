@@ -82,7 +82,7 @@ public class InputHandler : MonoBehaviour {
     // this function is called when a left button has been pressed
     private void OnButtonDownLeft(ControllerInput.Button buttonID) {
 #if INSTANTVR_ADVANCED
-        if (walkingType == WalkTypes.PointingTeleport && buttonID == leftHandMovements.activationButton) {
+        if (walking && walkingType == WalkTypes.PointingTeleport && buttonID == leftHandMovements.activationButton) {
             // When activation button is pressed we teleport to the focus position
             PointingTeleport(pointingDevice);
         }
@@ -107,12 +107,12 @@ public class InputHandler : MonoBehaviour {
 
     // this function is called when a right button has been pressed
     private void OnButtonDownRight(ControllerInput.Button buttonID) {
-        if (walkingType == WalkTypes.Teleport && buttonID == ControllerInput.Button.ButtonA) {
+        if (walking && walkingType == WalkTypes.Teleport && buttonID == ControllerInput.Button.ButtonA) {
             // When button One (A on Xbox controller) is pressed we teleport in the looking direction
             Teleport(ivr.transform.position + ivr.headTarget.transform.forward * 50 * Time.deltaTime);
         }
 #if INSTANTVR_ADVANCED
-        else if (walkingType == WalkTypes.PointingTeleport && buttonID == rightHandMovements.activationButton) {
+        else if (walking && walkingType == WalkTypes.PointingTeleport && buttonID == rightHandMovements.activationButton) {
             // When activation button is pressed we teleport to the focus position
             PointingTeleport(pointingDevice);
         }
@@ -208,7 +208,7 @@ public class InputHandler : MonoBehaviour {
 
             // now move the character
             if (walking || sidestepping)
-                ivr.Move(horizontal, 0, vertical);
+                ivr.Move(horizontal * Time.deltaTime, 0, vertical * Time.deltaTime);
 
             if (rotation) {
                 // rotate the character using the right analog stick left/right
@@ -294,11 +294,13 @@ public class InputHandler : MonoBehaviour {
         Teleport(targetPosition);
     }
 
+    public LayerMask teleportLayerMask = Physics.DefaultRaycastLayers;
+
     private void Teleport(Vector3 position) {
         RaycastHit hit;
 
         // raycast to ensure that we do not teleport into objects
-        if (Physics.Raycast(position + Vector3.up, Vector3.down, out hit, 1.5F)) {
+        if (Physics.Raycast(position + Vector3.up, Vector3.down, out hit, 1.5F, teleportLayerMask)) {
             position += Vector3.up * ((hit.point.y - ivr.transform.position.y) + 0.05f);
         }
 

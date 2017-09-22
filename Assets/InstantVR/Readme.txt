@@ -1,7 +1,5 @@
 InstantVR
-Version: 3.8.4
 
-New features:
--   Rotation speed fix
--   Fixed avatars without middle fingers
--   SteamVR updated to version 1.2.2
+Version 3.8.6
+• Fixed collisions with static objects
+• Fixed avatars without middle fingers

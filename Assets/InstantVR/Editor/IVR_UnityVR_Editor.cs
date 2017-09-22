@@ -20,15 +20,15 @@ namespace IVR {
         private IVR_UnityVRHead unityHead;
 
         public override void OnInspectorGUI() {
-#if !UNITY_ANDROID
+#if UNITY_STANDALONE_WIN
             if (PlayerSettings.virtualRealitySupported == false)
-                EditorGUILayout.HelpBox("VirtualRealitySupported needs to be enabled in Player Settings for Rift support", MessageType.Warning, true);
+                EditorGUILayout.HelpBox("VirtualRealitySupported needs to be enabled in Player Settings for SteamVR/Oculus support", MessageType.Warning, true);
 
             ivrUnity = (IVR_UnityVR)target;
 
-#else
+#elif UNITY_ANDROID
         if (PlayerSettings.virtualRealitySupported == false)
-            EditorGUILayout.HelpBox("VirtualRealitySupported needs to be enabled in Player Settings for Gear VR support", MessageType.Warning, true);
+            EditorGUILayout.HelpBox("VirtualRealitySupported needs to be enabled in Player Settings for Gear VR/Cardboard support", MessageType.Warning, true);
 #endif
             base.OnInspectorGUI();
         }

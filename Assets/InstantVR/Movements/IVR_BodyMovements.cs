@@ -193,16 +193,16 @@ namespace IVR {
                 }
 
 //                if (enableTorso && !crouching)
- //                   bendAngle = torso.AutoHorizontal(rightHandOTarget, rightHandTarget, rightArm, leftHandOTarget, leftHandTarget, leftArm, headTarget);
+//                    bendAngle = torso.AutoHorizontal(rightHandOTarget, rightHandTarget, rightArm, leftHandOTarget, leftHandTarget, leftArm, headTarget);
 //
- //               if (enableLegs && bendAngle >= maxHipAngle)
-  //                  crouching = torso.AutoVertical(rightHandOTarget, rightHandTarget, rightArm, leftHandOTarget, leftHandTarget, leftArm, headTarget);
+//                if (enableLegs && bendAngle >= maxHipAngle)
+//                    crouching = torso.AutoVertical(rightHandOTarget, rightHandTarget, rightArm, leftHandOTarget, leftHandTarget, leftArm, headTarget);
             }
 
 //            if (enableLegs) {
- //               rightLeg.Calculate(rightFootTarget.transform);
-  //              leftLeg.Calculate(leftFootTarget.transform);
-   //         }
+//                rightLeg.Calculate(rightFootTarget.transform);
+//                leftLeg.Calculate(leftFootTarget.transform);
+//            }
         }
 
         private Vector3 minHeadAngles = new Vector3(-60, -90, -45);

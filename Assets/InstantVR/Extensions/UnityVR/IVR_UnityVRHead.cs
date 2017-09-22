@@ -2,10 +2,10 @@
  * Copyright (c) 2017 by Passer VR
  * author: Pascal Serrarens
  * email: support@passervr.com
- * version: 3.8.2
- * date: April 4, 2017
+ * version: 3.8.6
+ * date: July 19, 2017
  * 
- * - Fix for running InstantVR without VR on other platforms
+ * - Fix: Oculus does not use extension.TrackerPosition
  */
 
 using UnityEngine;
@@ -44,7 +44,11 @@ namespace IVR {
             if (extension == null)
                 extension = ivr.GetComponent<IVR_UnityVR>();
 
+#if UNITY_IOS
+            extension.present = true; // maybe only when GVR SDK is present?
+#else
             extension.present = VRDevice.isPresent;
+#endif
 
             Camera camera = CheckCamera();
             if (camera != null) {
@@ -54,8 +58,10 @@ namespace IVR {
                 DeterminePlatform();
 
                 if (vrTracking) {
-                    if (!originOnFloor)
+                    if (!originOnFloor) {
                         cameraRoot.transform.position = transform.position;
+                        extension.trackerPosition = cameraRoot.transform.position;
+                    }
                     cameraRoot.transform.rotation = ivr.transform.rotation;
 
                     cameraTransform.SetParent(cameraRoot.transform, false);
@@ -84,6 +90,13 @@ namespace IVR {
         }
 
         private void DeterminePlatform() {
+#if UNITY_IOS
+            if (extension.present) {
+                vrTracking = true;
+                positionalTracking = true;
+                originOnFloor = false;
+            }
+#else
             if (!VRSettings.enabled) {
                 vrTracking = false;
                 return;
@@ -100,9 +113,10 @@ namespace IVR {
                     originOnFloor = true;
                     break;
                 default:
-                    positionalTracking = false;
+                    positionalTracking = true;
                     break;
             }
+#endif
         }
 
         public override void UpdateController() {
@@ -120,14 +134,14 @@ namespace IVR {
 
 
         private void CalculateCameraRoot() {
-            if (positionalTracking && originOnFloor)
+            if (positionalTracking)
                 cameraRoot.transform.localPosition = extension.trackerPosition;
         }
 
         private void SetHeadTargets() {
-                transform.rotation = cameraTransform.rotation;
-                if (positionalTracking)
-                    transform.position = cameraTransform.position + cameraTransform.rotation * -neck2eyes;
+            transform.rotation = cameraTransform.rotation;
+            if (positionalTracking)
+                transform.position = cameraTransform.position + cameraTransform.rotation * -neck2eyes;
 #if INSTANTVR_ADVANCED
 #if IVR_KINECT
                 else {

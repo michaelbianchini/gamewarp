@@ -1,10 +1,10 @@
 /* InstantVR
  * author: Pascal Serrarens
  * email: support@passervr.com
- * version: 3.8.2
- * date: June 2, 2017
+ * version: 3.8.6
+ * date: August 14, 2017
  * 
- * - Fix: bodypull
+ * - Fix: collisions
  */
 
 using UnityEngine;
@@ -161,6 +161,7 @@ namespace IVR {
                     characterTransform = animators[i].transform;
 
                     if (collisions) {
+                        AddRigidbody(this.gameObject);
                         AddRigidbody(characterTransform.gameObject);
                     }
                 }
@@ -199,23 +200,6 @@ namespace IVR {
             LateUpdateExtensions();
             Controllers.EndFrame();
             inputDirection = Vector3.zero;
-
-            if (characterTransform != null) {
-                if (headMovements && headMovements.enabled)
-                    headMovements.UpdateMovements();
-                if (bodyMovements != null)
-                    bodyMovements.UpdateBodyMovements();
-            }
-
-            CalculateSpeed();
-            PlaceBodyCapsule();
-            DetermineCollision();
-            if (useGravity)
-                groundCheck();
-
-//            UpdateMovements();
-		
-
         }
 
         private void UpdateExtensions() {
@@ -399,17 +383,18 @@ namespace IVR {
         public void Move(Vector3 translationVector, bool allowUp) {
             translationVector = CheckMovement(translationVector);// does not support body pull
             if (translationVector.magnitude > 0) {
-                Vector3 translation = translationVector * Time.deltaTime;
+                //Vector3 translation = translationVector * Time.deltaTime;
+                // Does not belong here
                 if (allowUp) {
-                    transform.position += translation;
+                    transform.position += translationVector;
                 } else {
-                    transform.position += new Vector3(translation.x, 0, translation.z);
+                    transform.position += new Vector3(translationVector.x, 0, translationVector.z);
                 }
             }
         }
 
         public void Rotate(float angle) {
-            transform.RotateAround(headTarget.position, Vector3.up, angle * rotationSpeed * Time.deltaTime);
+            transform.RotateAround(headTarget.position, Vector3.up, angle * rotationSpeed); // * Time.deltaTime); //Does not belong here
         }
 
         private float curProximitySpeed = 1;
@@ -635,7 +620,7 @@ namespace IVR {
         public void OnTriggerStay(Collider otherCollider) {
             Rigidbody rigidbody = otherCollider.attachedRigidbody;
             if (!otherCollider.isTrigger &&
-                rigidbody != gameObject.GetComponent<Rigidbody>() && rigidbody != null
+                rigidbody != gameObject.GetComponent<Rigidbody>()
                 && rigidbody != leftHandMovements.handRigidbody && rigidbody != rightHandMovements.handRigidbody
                 ) {
 
