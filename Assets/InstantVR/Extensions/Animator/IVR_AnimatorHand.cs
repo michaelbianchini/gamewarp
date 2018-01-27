@@ -1,10 +1,10 @@
 ﻿/* InstantVR Animator hand
  * author: Pascal Serrarens
  * email: support@passervr.com
- * version: 3.5.1
+ * version: 3.8.9
  * date: August 5, 2016
  *
- * - fixed hands not following hip when foot animators are disabled 
+ * - Fixed fingers not being reset when not tracking
  */
 
 using UnityEngine;
@@ -25,6 +25,8 @@ namespace IVR {
         [HideInInspector]
         private Vector3 hip2hand, foot2hand;
 
+        //[HideInInspector]
+        //private IVR_HandMovements handMovements;
 
         public override void StartController(InstantVR ivr) {
             extension = ivr.GetComponent<IVR_Animator>();
@@ -32,6 +34,8 @@ namespace IVR {
 
             animatorHip = ivr.hipTarget.GetComponent<IVR_AnimatorHip>();
             lastHipPosition = ivr.hipTarget.position;
+
+            //handMovements = GetComponent<IVR_HandMovements>();
 
             hip2hand = Quaternion.Inverse(ivr.transform.rotation) * (ivr.hipTarget.position - this.transform.position);
             if (this.transform == ivr.leftHandTarget) {

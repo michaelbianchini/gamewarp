@@ -1,10 +1,10 @@
 ﻿/* InstantVR Traditional hand
  * author: Pascal Serrarens
  * email: support@passervr.com
- * version: 3.4.10
+ * version: 3.8.9
  * date: June 19, 2016
  * 
- * - Removed unused MouseInput
+ * - Fixed fingers not being reset when not tracking
  */
 
 using UnityEngine;
@@ -13,8 +13,10 @@ namespace IVR {
 
     public class IVR_TraditionalHand : IVR_HandController {
 
-//        [HideInInspector]
-//        private IVR_HandMovementsBase handMovements;
+#if INSTANTVR_ADVANCED
+        [HideInInspector]
+        private IVR_HandMovementsBase handMovements;
+#endif
         [HideInInspector]
         private IVR_AnimatorHand handAnimator;
 
@@ -34,13 +36,24 @@ namespace IVR {
             tracking = true;
 
             handAnimator = GetComponent<IVR_AnimatorHand>();
+#if INSTANTVR_ADVANCED
+            handMovements = GetComponent<IVR_HandMovementsBase>();
+#endif
         }
 
         public override void UpdateController() {
             if (enabled) {
                 if (handAnimator != null) {
                     handAnimator.UpdateController();
-
+#if INSTANTVR_ADVANCED
+                    if (handMovements!= null && selected) {
+                        handMovements.thumbCurl = 0;
+                        handMovements.indexCurl = 0;
+                        handMovements.middleCurl = 0;
+                        handMovements.ringCurl = 0;
+                        handMovements.littleCurl = 0;
+                    }
+#endif
                     position = handAnimator.position;
                     rotation = handAnimator.rotation;
                     if (selected) {

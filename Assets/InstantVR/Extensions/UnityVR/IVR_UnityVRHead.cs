@@ -9,7 +9,11 @@
  */
 
 using UnityEngine;
+#if UNITY_2017_2_OR_NEWER
+using UnityEngine.XR;
+#else
 using UnityEngine.VR;
+#endif
 
 namespace IVR {
 
@@ -46,6 +50,8 @@ namespace IVR {
 
 #if UNITY_IOS
             extension.present = true; // maybe only when GVR SDK is present?
+#elif UNITY_2017_2_OR_NEWER
+            extension.present = XRDevice.isPresent;
 #else
             extension.present = VRDevice.isPresent;
 #endif
@@ -60,7 +66,7 @@ namespace IVR {
                 if (vrTracking) {
                     if (!originOnFloor) {
                         cameraRoot.transform.position = transform.position;
-                        extension.trackerPosition = cameraRoot.transform.position;
+                        extension.trackerPosition = cameraRoot.transform.localPosition;
                     }
                     cameraRoot.transform.rotation = ivr.transform.rotation;
 
@@ -97,13 +103,21 @@ namespace IVR {
                 originOnFloor = false;
             }
 #else
-            if (!VRSettings.enabled) {
-                vrTracking = false;
+#if UNITY_2017_2_OR_NEWER
+            if (!XRSettings.enabled) {
+#else
+            if (!VRSettings.enabled) { 
+#endif
+            vrTracking = false;
                 return;
             }
 
             vrTracking = true;
+#if UNITY_2017_2_OR_NEWER
+            switch (XRSettings.loadedDeviceName) {
+#else
             switch (VRSettings.loadedDeviceName) {
+#endif
                 case "Oculus":
                     positionalTracking = true;
                     originOnFloor = false;

@@ -2,11 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-public class PageLoader : MonoBehaviour
+public class SceneAndURLLoader : MonoBehaviour
 {
-    public string sceneToLoad;
-
     private PauseMenu m_PauseMenu;
 
 
@@ -16,11 +13,11 @@ public class PageLoader : MonoBehaviour
     }
 
 
-    public void SceneLoad ()
+    public void SceneLoad(string sceneName)
 	{
 		//PauseMenu pauseMenu = (PauseMenu)FindObjectOfType(typeof(PauseMenu));
-		//m_PauseMenu.MenuOff ();
-		SceneManager.LoadScene(sceneToLoad);
+		m_PauseMenu.MenuOff ();
+		SceneManager.LoadScene(sceneName);
 	}
 
 
@@ -28,16 +25,5 @@ public class PageLoader : MonoBehaviour
 	{
 		Application.OpenURL(url);
 	}
-
-        public void OnMouseOver () {
-           if (Input.GetMouseButtonDown(0)) {
-              SceneLoad();
-           }
-        }
-
-        public void Update ()
-
-        { OnMouseOver(); }
-
 }
-		
+

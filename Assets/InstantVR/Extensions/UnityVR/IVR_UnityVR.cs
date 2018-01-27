@@ -24,6 +24,7 @@ namespace IVR {
             IVR_UnityVRHead unityVrHead = ivr.headTarget.GetComponent<IVR_UnityVRHead>();
             unityVrHead.cameraRoot = new GameObject("UnityVR Root");
             unityVrHead.cameraRoot.transform.parent = ivr.transform;
+            unityVrHead.cameraRoot.transform.localScale = Vector3.one;
         }
     }
 }

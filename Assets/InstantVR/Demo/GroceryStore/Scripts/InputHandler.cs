@@ -49,8 +49,8 @@ public class InputHandler : MonoBehaviour {
     private bool rightLettingGo;
 #endif
 
-#region Start
-    public void Start () {
+    #region Start
+    public void Start() {
         ivr = GetComponent<InstantVR>();
         ivr.SetPlayerHeight(playerHeight);
 
@@ -77,7 +77,7 @@ public class InputHandler : MonoBehaviour {
             pointingDevice = GetPointingDevice();
         }
 #endif
-	}
+    }
 
     // this function is called when a left button has been pressed
     private void OnButtonDownLeft(ControllerInput.Button buttonID) {
@@ -187,9 +187,9 @@ public class InputHandler : MonoBehaviour {
         Debug.LogError("Gaze/Pointing interaction needs to be set on head or hand for PointingTeleport");
         return InputDeviceIDs.None;
     }
-#endregion
+    #endregion
 
-#region Update
+    #region Update
     public void Update() {
         CheckQuit();
 
@@ -255,6 +255,15 @@ public class InputHandler : MonoBehaviour {
         }
     }
 
+    private void ClickGrabDirect() {
+        if (leftHandMovements && leftHandMovements.touchingObject != null) {
+            leftHandMovements.NetworkingGrab(leftHandMovements.touchingObject);
+        } else
+            if (rightHandMovements && rightHandMovements.touchingObject != null) {
+            rightHandMovements.NetworkingGrab(rightHandMovements.touchingObject);
+        }
+    }
+
     private void UpdateFingerClickGrabbing() {
         if (leftHandMovements) {
             leftHandMovements.indexCurl = controller0.left.trigger1;
@@ -306,7 +315,7 @@ public class InputHandler : MonoBehaviour {
 
         ivr.transform.position = position;
     }
-#endregion
+    #endregion
 
     public void ControllerPressButtonA() {
         controller0.right.PressButton(ControllerInput.Button.ButtonA);

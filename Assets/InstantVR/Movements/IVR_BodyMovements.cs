@@ -182,27 +182,27 @@ namespace IVR {
                 if (enableLegs)
                     torso.CalculateVertical(headTarget);
 
-//                leftArm.Calculate(leftHandTarget);
-//                rightArm.Calculate(rightHandTarget);
+                leftArm.Calculate(leftHandTarget);
+                rightArm.Calculate(rightHandTarget);
 
                 CalculateHeadOrientation(torso.neck, headTarget);
             } else {
                 if (bendAngle <= 0 && !crouching) {
-//                    leftArm.Calculate(leftHandTarget);
-//                    rightArm.Calculate(rightHandTarget);
+                    leftArm.Calculate(leftHandTarget);
+                    rightArm.Calculate(rightHandTarget);
                 }
 
-//                if (enableTorso && !crouching)
-//                    bendAngle = torso.AutoHorizontal(rightHandOTarget, rightHandTarget, rightArm, leftHandOTarget, leftHandTarget, leftArm, headTarget);
-//
-//                if (enableLegs && bendAngle >= maxHipAngle)
-//                    crouching = torso.AutoVertical(rightHandOTarget, rightHandTarget, rightArm, leftHandOTarget, leftHandTarget, leftArm, headTarget);
+                if (enableTorso && !crouching)
+                    bendAngle = torso.AutoHorizontal(rightHandOTarget, rightHandTarget, rightArm, leftHandOTarget, leftHandTarget, leftArm, headTarget);
+
+                if (enableLegs && bendAngle >= maxHipAngle)
+                    crouching = torso.AutoVertical(rightHandOTarget, rightHandTarget, rightArm, leftHandOTarget, leftHandTarget, leftArm, headTarget);
             }
 
-//            if (enableLegs) {
-//                rightLeg.Calculate(rightFootTarget.transform);
-//                leftLeg.Calculate(leftFootTarget.transform);
-//            }
+            if (enableLegs) {
+                rightLeg.Calculate(rightFootTarget.transform);
+                leftLeg.Calculate(leftFootTarget.transform);
+            }
         }
 
         private Vector3 minHeadAngles = new Vector3(-60, -90, -45);
@@ -313,7 +313,8 @@ namespace IVR {
                 fromNormHips = Quaternion.Inverse(Quaternion.LookRotation(hipTarget.forward)) * hips.rotation;
             }
             userNeckTarget = (neckTarget != null);
-            spineAxis = spine.InverseTransformDirection(hipTarget.right);
+            if (hipTarget != null)
+                spineAxis = spine.InverseTransformDirection(hipTarget.right);
         }
 
         public void CalculateHorizontal(Transform neckTarget) {

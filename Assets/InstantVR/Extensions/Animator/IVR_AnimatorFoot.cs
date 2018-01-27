@@ -231,6 +231,7 @@ namespace IVR {
                 footAnimation.startStep = false;
                 footAnimation.f = 0;
             } else if (footAnimation.f > 0) {
+                stepStart = new Vector3(stepStart.x, ivr.transform.position.y, stepStart.z);
                 Vector3 stepTarget = ivr.hipTarget.TransformPoint(startHipFoot) - stepStart;
                 stepTarget = new Vector3(stepTarget.x, startPosition.y, stepTarget.z);
 
@@ -249,7 +250,7 @@ namespace IVR {
 
         Vector3 lastPos = Vector3.zero;
         private void FootStaying() {
-            transform.position = lastPos;
+            transform.position = new Vector3(lastPos.x, transform.position.y, lastPos.z);
         }
     }
 }

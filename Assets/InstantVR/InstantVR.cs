@@ -66,6 +66,7 @@ namespace IVR {
 
         [HideInInspector]
         public Transform characterTransform;
+        [HideInInspector]
         public float avatarNeckHeight;
 
         [HideInInspector]
@@ -77,12 +78,19 @@ namespace IVR {
         public bool useGravity = true;
 
         public bool collisions = true;
-        //[HideInInspector]
+        [HideInInspector]
         public bool triggerEntered = false, collided = false;
         [HideInInspector]
         public Vector3 hitNormal = Vector3.zero;
         [HideInInspector]
         public Vector3 inputDirection;
+
+        private void OnDisable() {
+            if (leftHandMovements.handRigidbody != null)
+                leftHandMovements.handRigidbody.gameObject.SetActive(false);
+            if (rightHandMovements.handRigidbody != null)
+                rightHandMovements.handRigidbody.gameObject.SetActive(false);
+        }
 
         protected virtual void Awake() {
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -119,16 +127,16 @@ namespace IVR {
 
             foreach (IVR_Controller c in headControllers)
                 c.StartController(this);
-//            foreach (IVR_Controller c in leftHandControllers)
-//                c.StartController(this);
-//            foreach (IVR_Controller c in rightHandControllers)
-//                c.StartController(this);
-//            foreach (IVR_Controller c in hipControllers)
-//                c.StartController(this);
-//            foreach (IVR_Controller c in leftFootControllers)
-//                c.StartController(this);
-//            foreach (IVR_Controller c in rightFootControllers)
-//                c.StartController(this);
+            foreach (IVR_Controller c in leftHandControllers)
+                c.StartController(this);
+            foreach (IVR_Controller c in rightHandControllers)
+                c.StartController(this);
+            foreach (IVR_Controller c in hipControllers)
+                c.StartController(this);
+            foreach (IVR_Controller c in leftFootControllers)
+                c.StartController(this);
+            foreach (IVR_Controller c in rightFootControllers)
+                c.StartController(this);
 
             bodyMovements = GetComponent<IVR_BodyMovements>();
             if (bodyMovements != null)
@@ -136,10 +144,10 @@ namespace IVR {
 
             if (headMovements && headMovements.enabled)
                 headMovements.StartMovements(this);
-//            if (leftHandMovements != null && leftHandMovements.enabled)
-//               leftHandMovements.StartMovements(this);
-//            if (rightHandMovements != null && rightHandMovements.enabled)
-//                rightHandMovements.StartMovements(this);
+            if (leftHandMovements != null && leftHandMovements.enabled)
+                leftHandMovements.StartMovements(this);
+            if (rightHandMovements != null && rightHandMovements.enabled)
+                rightHandMovements.StartMovements(this);
 
             InitGroundcheck();
         }
@@ -213,14 +221,14 @@ namespace IVR {
         }
 
         private void UpdateControllers() {
-//            if (leftHandMovements != null)
-//                leftHandMovements.selectedController = (IVR_HandController)UpdateController(leftHandControllers, leftHandMovements.selectedController);
-//            if (rightHandMovements != null)
-//                rightHandMovements.selectedController = (IVR_HandController)UpdateController(rightHandControllers, rightHandMovements.selectedController);
-//
-//            hipController = UpdateController(hipControllers, hipController);
-//            leftFootController = UpdateController(leftFootControllers, leftFootController);
-//            rightFootController = UpdateController(rightFootControllers, rightFootController);
+            if (leftHandMovements != null)
+                leftHandMovements.selectedController = (IVR_HandController)UpdateController(leftHandControllers, leftHandMovements.selectedController);
+            if (rightHandMovements != null)
+                rightHandMovements.selectedController = (IVR_HandController)UpdateController(rightHandControllers, rightHandMovements.selectedController);
+
+            hipController = UpdateController(hipControllers, hipController);
+            leftFootController = UpdateController(leftFootControllers, leftFootController);
+            rightFootController = UpdateController(rightFootControllers, rightFootController);
             // Head needs to be after hands because of traditional controller.
             headController = UpdateController(headControllers, headController);
         }
@@ -420,7 +428,7 @@ namespace IVR {
 
                 float acceleration = forwardSpeed - directionVector.z;
                 maxAcceleration = 1f * Time.deltaTime;
-                acceleration = Mathf.Clamp(acceleration, -maxAcceleration, maxAcceleration);
+                acceleration = Mathf.Clamp(acceleration, -maxAcceleration * 1, maxAcceleration);
                 forwardSpeed = directionVector.z + acceleration;
             }
 
@@ -567,12 +575,13 @@ namespace IVR {
 
         private void DetermineCollision() {
             if (proximitySpeed) {
-                if (triggerEntered && bodyCapsule.radius <= 0.25f) {
+                if (triggerEntered && bodyCapsule.radius <= 0.25F) {
                     collided = true;
                     if (velocity.sqrMagnitude > 0.01F) {
                         hitNormal = DetermineHitNormal(velocity);
+                        Debug.DrawRay(transform.position, hitNormal);
                     }
-                } else {
+                } else if (collided && bodyCapsule.radius > 0.25F) {
                     collided = false;
                 }
             } else {
@@ -587,34 +596,32 @@ namespace IVR {
         }
 
         private Vector3 DetermineHitNormal(Vector3 inputDirection) {
-            Vector3 hitNormal = Vector3.zero;
-
             CapsuleCollider cc = bodyCapsule;
             Vector3 capsuleCenter = transform.position + cc.center;
             Vector3 capsuleOffset = ((cc.height - cc.radius) / 2) * Vector3.up;
-            
-            Vector3 top = capsuleCenter + capsuleOffset;
-            Vector3 bottom = capsuleCenter - capsuleOffset;
 
-            if (RaycastAllNormal(bottom, inputDirection, cc.radius + 0.05F, out hitNormal))
+            Vector3 backSweep = inputDirection.normalized * (cc.radius + 0.1F);
+            Vector3 top = capsuleCenter + capsuleOffset - backSweep;
+            Vector3 bottom = capsuleCenter - capsuleOffset - backSweep;
+
+            Vector3 hitNormal;
+            if (CapsulecastAllNormal(top, bottom, cc.radius, inputDirection.normalized, inputDirection.magnitude * Time.deltaTime + cc.radius + 0.1F, out hitNormal))
                 return hitNormal;
 
-            RaycastAllNormal(top, inputDirection, cc.radius + 0.05F, out hitNormal);
-            return hitNormal;
+            return -inputDirection.normalized;
         }
 
-        private bool RaycastAllNormal(Vector3 origin, Vector3 direction, float maxDistance, out Vector3 hitNormal) {
-            RaycastHit[] hits = Physics.RaycastAll(origin, direction, maxDistance);
+        private bool CapsulecastAllNormal(Vector3 top, Vector3 bottom, float radius, Vector3 direction, float maxDistance, out Vector3 hitNormal) {
+            RaycastHit[] hits = Physics.CapsuleCastAll(top, bottom, radius, direction, maxDistance, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
 
             hitNormal = Vector3.zero;
-            bool foundHit = false;
-            for (int i = 0; i < hits.Length && !foundHit; i++) {
-                if (!hits[i].collider.isTrigger) {
-                    foundHit = true;
+            for (int i = 0; i < hits.Length; i++) {
+                if (!hits[i].collider.isTrigger && hits[i].point.sqrMagnitude > 0) {
                     hitNormal = hits[i].normal;
+                    return true;
                 }
             }
-            return foundHit;
+            return false;
         }
 
         public void OnTriggerStay(Collider otherCollider) {
@@ -623,7 +630,6 @@ namespace IVR {
                 rigidbody != gameObject.GetComponent<Rigidbody>()
                 && rigidbody != leftHandMovements.handRigidbody && rigidbody != rightHandMovements.handRigidbody
                 ) {
-
                 triggerEntered = true;
             }
         }

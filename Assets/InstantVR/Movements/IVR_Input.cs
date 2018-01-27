@@ -146,11 +146,11 @@ namespace IVR {
             for (int i = 0; i < 4; i++) {
                 if (buttons[i] && !lastButtons[i]) {
                     if (OnButtonDownEvent != null)
-                        OnButtonDownEvent((ControllerInput.Button) i);
+                        OnButtonDownEvent((ControllerInput.Button)i);
 
                 } else if (!buttons[i] && lastButtons[i]) {
                     if (OnButtonUpEvent != null)
-                        OnButtonUpEvent((ControllerInput.Button) i);
+                        OnButtonUpEvent((ControllerInput.Button)i);
                 }
                 lastButtons[i] = buttons[i];
             }
@@ -280,7 +280,7 @@ namespace HutongGames.PlayMaker.Actions {
 
         [RequiredField]
         [Tooltip("Left or right (side) controller")]
-        public BodySide controllerSide = BodySide.Left;
+        public IVR.ControllerInput.Side controllerSide = IVR.ControllerInput.Side.Left;
 
         [RequiredField]
         [UIHint(UIHint.Variable)]
@@ -294,7 +294,7 @@ namespace HutongGames.PlayMaker.Actions {
         }
 
         public override void OnUpdate() {
-            IVR.ControllerInputSide controller = (controllerSide == BodySide.Left) ? controller0.left : controller0.right;
+            IVR.ControllerInputSide controller = (controllerSide == IVR.ControllerInput.Side.Left) ? controller0.left : controller0.right;
 
             storeVector.Value = new Vector3(controller.stickHorizontal, 0, controller.stickVertical);
         }
@@ -306,7 +306,7 @@ namespace HutongGames.PlayMaker.Actions {
 
         [RequiredField]
         [Tooltip("Left or right (side) controller")]
-        public BodySide controllerSide = BodySide.Right;
+        public IVR.ControllerInput.Side controllerSide = IVR.ControllerInput.Side.Right;
 
         [RequiredField]
         [UIHint(UIHint.Variable)]
@@ -334,7 +334,7 @@ namespace HutongGames.PlayMaker.Actions {
         }
 
         public override void OnUpdate() {
-            IVR.ControllerInputSide controller = (controllerSide == BodySide.Left) ? controller0.left : controller0.right;
+            IVR.ControllerInputSide controller = (controllerSide == IVR.ControllerInput.Side.Left) ? controller0.left : controller0.right;
 
             bool oldBool = storeBool.Value;
 

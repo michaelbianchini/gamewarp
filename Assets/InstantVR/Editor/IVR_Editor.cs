@@ -16,8 +16,8 @@ namespace IVR {
     [CustomEditor(typeof(InstantVR))]
     public class InstantVR_Editor : Editor {
         public override void OnInspectorGUI() {
-#if !(UNITY_5_5 || UNITY_5_6)
-            EditorGUILayout.HelpBox("Only Unity 5.5 and 5.6 are supported", MessageType.Error);
+#if !(UNITY_5_5 || UNITY_5_6 || UNITY_2017_1 || UNITY_2017_2)
+            EditorGUILayout.HelpBox("Only Unity 5.5, 5.6, 2017.1 and 2017.2 are supported", MessageType.Error);
 #endif
 
             base.OnInspectorGUI();
