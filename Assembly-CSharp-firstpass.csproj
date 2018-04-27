@@ -46,6 +46,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Plugins\Cradle\Examples\Clockwork\Clockwork.cs" />
+     <Compile Include="Assets\Plugins\Cradle\TwineTextPlayer\Core\TwineTextPlayer.cs" />
+     <Compile Include="Assets\Plugins\Cradle\TwineTextPlayer\Core\TwineTextPlayerElement.cs" />
+     <Compile Include="Assets\Plugins\Cradle\TwineTextPlayer\Core\WrapLayoutGroup.cs" />
+     <Compile Include="Assets\Plugins\Cradle\TwineTextPlayer\Core\WrapLineBreak.cs" />
      <Compile Include="Assets\Standard Assets\2D\Scripts\Camera2DFollow.cs" />
      <Compile Include="Assets\Standard Assets\2D\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Standard Assets\2D\Scripts\Platformer2DUserControl.cs" />
@@ -223,6 +228,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ConvertDepth.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurvesSimple.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderYUV.shader" />
+     <None Include="Assets\Plugins\Cradle\Editor\ThirdParty\PhantomJS\third-party.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\CreaseApply.shader" />
      <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
      <None Include="Assets\Standard Assets\Fonts\OpenSans\License!.txt" />
@@ -262,6 +268,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA2.shader" />
      <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
+     <None Include="Assets\Story\entweed1519852280996.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrection3DLut.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\LensFlareCreate.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\EdgeDetectNormals.shader" />
@@ -300,6 +307,9 @@
  </Reference>
  <Reference Include="UnityEngine.VR">
  <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
+ </Reference>
+ <Reference Include="Cradle">
+ <HintPath>/home/mbianchi/Projects/time/game/Assets/Plugins/Cradle/Cradle.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

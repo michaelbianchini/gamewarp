@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 56ceac064a91a4a2ba0e896e9bad1411
+timeCreated: 1524786189
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 180
+  forceTextureCase: -1
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Back Issues BB
+  fontNames:
+  - Back Issues BB
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 5d8c493468e994938825dad1c16b94b0, type: 3}
+  - {fileID: 12800000, guid: 797156f5383e7418ab1c8727f8345a6d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
