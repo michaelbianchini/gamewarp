@@ -21,7 +21,7 @@ public class ChoiceBox : MonoBehaviour {
 		
 	public void LoadOneChoice (string choice_name) {
 		Debug.Log (choice_name);
-		Transform myBox = Instantiate (choiceBoxTransform, new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y + 100, gameObject.transform.position.z), gameObject.transform.rotation);
+		Transform myBox = Instantiate (choiceBoxTransform, new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 5), gameObject.transform.rotation);
 		myBox.SetParent (gameObject.transform.parent);
 		Debug.Log (gameObject.name);
 		Debug.Log (gameObject.transform.rotation.y);
