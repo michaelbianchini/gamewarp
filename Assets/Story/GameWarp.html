@@ -47,18 +47,18 @@
 
 
 
-</script><tw-passagedata pid="1" name="Inside Broom Closet" tags="" position="402,29" size="100,100">I&#39;m looking at myself in the mirror and thinking, &quot;What am I going to be when I grow up?&quot; I&#39;m currently working as a janitor at Brookhaven National Laboratory. The Doctor has something in the works for tomorrow&#39;s Science Expo, and I don&#39;t even have the brains to understand his shopping list, let alone his scientific notes.  I guess I should just be happy to have a job right now; after the war, the pencil pushers are all over the place.
+</script><tw-passagedata pid="1" name="Inside Broom Closet" tags="" position="402,29" size="100,100">Currently working as a janitor at Brookhaven National Laboratory, I&#39;m looking at myself in the mirror and thinking, &quot;What am I going to be when I grow up?&quot; The Doctor has something in the works for tomorrow&#39;s Science Expo, and I don&#39;t even have the brains to understand his shopping list, let alone his scientific notes.  I guess I should just be happy to have a job right now; after the war, the pencil pushers are all over the place.
 Suddenly, I hear a noise in the lobby.  No one should be here this late except the Doc. It&#39;s probably just the storm, and the Doctor asked me to make sure I hang the Science Expo banner before it gets too windy out there.
 [[Investigate the noise in the lobby-&gt;Lobby]]
 [[Hang the banner on the roof-&gt;Roof]]
-(set: $rooms to 0)</tw-passagedata><tw-passagedata pid="2" name="Basement" tags="" position="383,386" size="100,100">(if: $proppedMop is true) [I remove my mop from the door jam and make my way back in out of the wind](elseif: $lobbyFirst is true)[I turn around to head back to the basement.](else:)[I make my way back in out of the wind.] Doc will be working late as usual. I can hear some conversation down there, sounds like he is talking to someone. I make my way down the stairs.
+(set: $rooms to 0)</tw-passagedata><tw-passagedata pid="2" name="Basement" tags="" position="383,386" size="100,100">(if: $proppedMop is true) [I remove my mop from the door jam and make my way back in out of the wind](elseif: $lobbyFirst is true)[I turn around to head back to the basement.](else:)[I make my way back in out of the wind.] Doc will be working late as usual. Sounds like he is talking to someone. I make my way down the stairs.
 When I get to the bottom, there are a bunch of open crates blocking the passage. I start to move around them when I hear a raised voice.
 (if: $rooms &gt; 1)[&quot;What are you doing to him!??!?&quot; It sounds like the Doctor&#39;s daughter, and she&#39;s upset.  I [[make my way around the boxes-&gt;Daughter]]](else:)[&quot;You said this was a harmless experiment and I would get class credit.  That machine looks dangerous, and I want to get paid if I&#39;m getting in it.&quot; I [[peek around the corner.-&gt;Experiment]]]</tw-passagedata><tw-passagedata pid="3" name="Lobby" tags="" position="131,293" size="100,100">(set: $rooms to $rooms+1)
 (set: $lobbyFirst to true)
-(if: $rooms is 1)[(set: $hasMop to true)I take my mop and hold it forward like one of those oriental swords that Doc had a picture of in his desk.
+(if: $rooms is 1)[(set: $hasMop to true)I take my mop and hold it forward like one of those oriental swords that Doc has a picture of on his desk.
 As I turn the corner, ](else:)[As I make my way back inside and to the lobby,]I see a shadow pass by the frosted glass window... I&#39;m guessing it&#39;s just the trees. This time of year, the wind gets pretty bad.
 
-Should I [[go outside-&gt;Go Home]] or [[let Doc know about it first-&gt;Basement]]?(if: $rooms is 1)[Or should I stop imagining things and [[go hang the sign on the roof-&gt;Roof]] like he asked?] 
+Should I [[go outside-&gt;Go Home]] or [[let Doc know about it first-&gt;Basement]]?(if: $rooms is 1)[ Or should I stop imagining things and [[go hang the sign on the roof-&gt;Roof]] like he asked?] 
 </tw-passagedata><tw-passagedata pid="4" name="Title" tags="" position="107,25" size="100,100">GAME WARP
 Brookhaven National Laboratory
 July 14, 1958
@@ -81,8 +81,8 @@ He stops in his tracks, turns around, visibly annoyed.  He removes his glasses. 
 &quot;I don&#39;t have time for this. You&#39;re fired!&quot; he shouts and makes his way down to his basement lab.
 I sadly collect my belongings and head for the lobby door.  On my way out, a student is walking in with some books in hand.  Somehow I remember his face. The next day, he showed up missing in the newspaper.
 GAME OVER</tw-passagedata><tw-passagedata pid="9" name="Go Home" tags="" position="33,143" size="100,100">I look around outside and realize it was just a stray cat running past the window sill.  The wind is kicking up badly enough that if I don&#39;t get on my bicycle and start riding home, I&#39;ll be liable to get blown away like that girl Dorothy in the Wizard of Oz.  On my way out, I see a car pulling in through the old rusty gate.  Strange that someone would be visiting the lab this late at night.
-GAME OVER</tw-passagedata><tw-passagedata pid="10" name="Experiment" tags="" position="98,495" size="100,100">It&#39;s hard to see through all of the cigarette smoke coming from Doc&#39;s work bench.  There are large blueprints scattered everywhere.  Doc is circling around a young man with slick back hair and a sweater vest.  His voice is suddenly very soothing &quot;No need to worry lad, it IS harmless.&quot; He&#39;s pointing to a large closet-sized shape in the corner that is hard to make out the details.  &quot;It&#39;s just a vision testing machine.  The door is only there to make sure no light gets in while we check your pupils.&quot; I notice that Doc has now come between the student and the stairway, his back is to me.
-&quot;No, I&#39;m out of here.&quot; the student starts to move and Doc grabs him and pushes him towards the machine.
+GAME OVER</tw-passagedata><tw-passagedata pid="10" name="Experiment" tags="" position="98,495" size="100,100">With all of the cigarette smoke coming from Doc&#39;s work bench, it&#39;s hard to see.  There are large blueprints scattered everywhere.  Doc is circling around a young man with slicked back hair and a sweater vest.  His voice is suddenly very soothing &quot;No need to worry lad, it IS harmless.&quot; He&#39;s pointing to a large closet-sized shape in the corner that is hard to make out.  &quot;It&#39;s just a vision testing machine.  The door is only there to make sure no light gets in while we check your pupils.&quot; I notice that Doc has now come between the student and the stairway, his back is to me.
+&quot;No, I&#39;m out of here!&quot; the student starts to move and Doc grabs him and pushes him towards the machine.
 What do I do? Should I try to [[stop Doc-&gt;Stop Him]] or keep safe behind these crates and [[see what happens next-&gt;Watch Him]]?</tw-passagedata><tw-passagedata pid="11" name="Stop Him" tags="" position="289,497" size="100,100">(if: $hasMop is true) [I grab my mop and swing it outwards to sweep Doc&#39;s leg.  He goes sprawling forward and loses his grip on the student. I have a bad feeling about that machine, and not sure how much I can trust the Doc at this point.  Should I [[destroy the machine-&gt;Destroy]] or [[offer to be the test subject in his place?-&gt;Volunteer]]]
 (else:) [I run up to them and try to pull them apart. The student breaks free and runs up the stairs. Doc grabs me &quot;Looks like you&#39;ll have to take his place!&quot; he snarls. Just as he is about to throw me into the machine, his [[daughter-&gt;Daughter]] comes running down the stairs.]</tw-passagedata><tw-passagedata pid="12" name="Watch Him" tags="" position="218,673" size="100,100">I watch in horror as the doctor grabs the student and is about to throw him into the machine when there is a shout behind me.  A girl comes running down the stairs and pushes me out of the way.  It&#39;s his [[daughter-&gt;Daughter]].</tw-passagedata><tw-passagedata pid="13" name="Destroy" tags="" position="385,685" size="100,100">I swing my mop at the machine and it topples over, circuitry and metal sheets flying everywhere.
 &quot;Noooooo!&quot; he screams.  &quot;You.. you don&#39;t know what you&#39;ve done!  It was almost ready!  Do you realize what you destroyed!?!? The chance to change history!  The chance to put an end to the war, in fact, to make the war never happen in the first place.  You just destroyed an actual TIME MACHINE, my life&#39;s work!&quot;
@@ -107,42 +107,42 @@ The smoke is starting to clear. The closet-sized machine is made of a dark metal
 
 &quot;NOOO!&quot; Doc shouts. The machine makes a faint whirring noise. &quot;You can&#39;t control it yourself, you don&#39;t know what you&#39;re doing!&quot; He pulls the plug on the control board and plugs the small game machine into it instead. &quot;This should be able to re-route the circuitry...&quot; he mutters to himself, and begins madly turning dials.  The green light flashes, the wheel spins, and the door pops open to show an empty chair.  Doc is on the floor with his arms around the base of the machine.
 
-&quot;Where did she go!?&quot; I shout, and Doc turns around to see I&#39;m there.  He looks dazed and confused.  &quot;Doc, where did she go?&quot;
+&quot;Where did she go!?&quot; I shout, and Doc turns around to face me.  He looks dazed and confused.  &quot;Doc, where did she go?&quot;
 &quot;She... she&#39;s GONE! My brilliant daughter.. my buttercup... I.. I didn&#39;t mean for this to happen... Please... I need you to bring her back.&quot;
 Should I [[get out of here and tell the authorities-&gt;Run Away]] or [[offer to help-&gt;Volunteer]]?
-(set: $sawDaughter to true)</tw-passagedata><tw-passagedata pid="17" name="Run Away" tags="" position="727,644" size="100,100">I turn to run and trip over one of the boxes.  Doc grabs me and throws me into his machine.  &quot;No... my daughter... you have to find her.&quot;  He&#39;s babbling incoherently and strapping me in. The door slams shut and I&#39;m in total darkness. [[Next-&gt;Machine]] </tw-passagedata><tw-passagedata pid="18" name="Doc&#39;s Speech" tags="" position="426,1038" size="100,100">(if: $volunteer is true)[&quot;Thank you for participating in something that is bigger than yourself, bigger than all of us.](else:)[&quot;]Now listen to me very carefully. I know you may think this is all very bizzare, and you probably won&#39;t believe me. But you will soon.&quot; (if: $volunteer is not true)[I try to shout at him but he just keeps on talking.] &quot;The experiment should be harmless now.. thanks to several failed iterations.  My boy, you are inside of a TIME MACHINE. Now, DON&#39;T TOUCH ANYTHING&quot;
+(set: $sawDaughter to true)</tw-passagedata><tw-passagedata pid="17" name="Run Away" tags="" position="727,644" size="100,100">I turn to run and trip over one of the boxes.  Doc grabs me and throws me into his machine.  &quot;No... my daughter... you have to find her.&quot;  He&#39;s babbling incoherently and strapping me in. The door slams shut and I&#39;m in total darkness. [[Next-&gt;Machine]] </tw-passagedata><tw-passagedata pid="18" name="Doc&#39;s Speech" tags="" position="426,1038" size="100,100">(if: $volunteer is true)[&quot;Thank you for participating in something that is bigger than yourself, bigger than all of us. ](else:)[&quot;]Now listen to me very carefully. I know you may think this is all very bizzare, and you probably won&#39;t believe me. But you will soon.(if: $volunteer is not true)[&quot; I try to shout at him but he just keeps on talking. &quot;] The experiment should be harmless now.. thanks to several failed iterations.  My boy, you are inside of a TIME MACHINE. Now, DON&#39;T TOUCH ANYTHING&quot;
 (set: $initializeMachine to true)
 I notice a [[faded hand diagram-&gt;Time Machine Diagram]] taped to the wall.</tw-passagedata><tw-passagedata pid="19" name="Time Machine Diagram" tags="" position="425,1185" size="100,100">&lt;pre style=&quot;line-height: 1em;&quot;&gt;
-BLACK HOLE FIELD GENERATOR INSTRUCTIONS:                                                                          
 
-Black Hole Field Size = 2 * MGn/c2
+BLACK HOLE FIELD GENERATOR INSTRUCTIONS:             
 
-Current MGn/c2 = .5
-        
+
+INCREASE MACHINE MASS TO INCREASE BLACK HOLE FIELD SIZE -
+BLACK HOLE FIELD SIZE NEEDS TO EQUAL NEW MACHINE SIZE!!!!
+	 
 
 
                                                            MASS BLOCKS:
 														   
-                                                      |  :::::::::::::::::
-                               ____________ .5 meters |  ::  1 MGn/c2   ::
-                               |              tall    |  :::::::::::::::::
-                               |
-                               |
-                               |                      |  :::::::::::::::::
-                               |___________ .5 meters |  ::  .5 MGn/c2  ::
-                               |                tall  |  :::::::::::::::::
-                               |
-                               \/
+                                                      |  ::::::::::::
+                            _______________ .5 meters |  ::  1 KG  ::
+                            |                 tall    |  ::::::::::::
+                            |   
+                            |                         |  ::::::::::::
+                            |   ___________ .5 meters |  ::  .5 KG ::
+                            |   |               tall  |  ::::::::::::
+                            |   |
+                            \/  \/
 							   
           |                &#96;-::::-.                                             
           |            :oo+         oo/&#96;                                        
-          |         .++//.............s/+:                                      
+          |         .++//:::::::::::::s/+:                                      
           |        ++  ::             o  :o.                                    
           |       s.   ::             o    s-                                   
           |      s     ::             o     s.                                  
  3.5 meters     :/     ::   TIME      o     &#96;s                                  
    tall   |     o      ::  MACHINE    o      s                                  
-          |     o      ::             o      o   &lt;----Black Hole Field                               
+          |     o      ::             o      o   &lt;----BLACK HOLE FIELD                               
           |     /:     ::             o      s                                  
           |      y     ::             o     o-                                  
           |      .s    ::             o    +/                                   
@@ -150,12 +150,18 @@ Current MGn/c2 = .5
           |         -o/:::::::::::::::o-+/                                      
           |           .++s           s+o-                                        
           |               .-:::::::.                                            
-                                                                                
-     NOTE: BLACK HOLE FIELD SIZE NEEDS TO BE THE SIZE OF THE MACHINE!!!!
-           (MACHINE IS 3.5 METERS TALL AND ITS CURRENT MASS IS .5 MGn/c2)
-           USE MANUAL OVERRIDE TO ADD MASS BLOCKS (EITHER .5 or 1 MGn/c2)
-           TO THE TOP OF THE MACHINE BUT MAKE SURE IT IS NO LARGER OR
-           SMALLER THAN THE MACHINE PLUS THE SIZE OF THE ADDED BLOCKS!
+		  
+		  
+                                                                           
+MACHINE SIZE is 3.5 meters tall and its current MASS is .5 KG
+Use manual override to add mass blocks (either .5 or 1 KG)
+to the machine, but make sure the new BLACK HOLE FIELD SIZE
+is no larger or smaller than the MACHINE SIZE plus the
+size of the added blocks!
+
+BLACK HOLE FIELD SIZE = 2 * MACHINE MASS
+Original MACHINE MASS = .5 KG
+
 &lt;/pre&gt;
 (if: $initializeMachine)
 [(set: $machineMass to .5)
@@ -163,12 +169,13 @@ Current MGn/c2 = .5
 (set: $machineSize to 3.5)
 (set: $initializeMachine to false)]
 There is a flickering digital readout that says:
-&quot;CURRENT MASS : $machineMass MGn/c2
+&quot;CURRENT MASS : $machineMass KG
  CURRENT MASS BLOCKS : $massBlocks BLOCKS&quot;
-Underneath it are two buttons :
+ 
+Underneath it are two buttons labelled &quot;MANUAL OVERRIDE&quot;:
 
-[[Press &quot;Add .5 MGn/c2&quot;-&gt;Add .5]] or
-[[Press &quot;Add 1 MGn/c2&quot;-&gt;Add 1]] or
+[[Press &quot;Add .5 KG&quot;-&gt;Add .5]] or
+[[Press &quot;Add 1 KG&quot;-&gt;Add 1]] or
 [[Just wait-&gt;Wait]]</tw-passagedata><tw-passagedata pid="20" name="Add .5" tags="" position="216,1342" size="100,100">(set: $machineMass to $machineMass + .5)
 (set: $massBlocks to $massBlocks + 1)
 (set: $machineSize to $machineSize + .5)
@@ -222,9 +229,9 @@ Then suddenly, the window starts to open, rotating upwards. (set: $smushFace to 
 &quot;Grab him!&quot; one of them shouts.  He is a short man with a strange hat on his head.  The other two men move out of the way as some more people come running in the room dressed in black body suits and wearing helmets. They grab me roughly and push me to the ground, taking my mop away. (set: $hasMop to false)
 I see a pair of expensive loafers walk up to me and some ash hit the ground.  I crane my neck up to see one of the other three men grinning down at me, a cigar in his mouth.  He is so tall that from the ground up he looks like a tower.  He is dressed in a dark suit with a  black shirt underneath. &quot;Well well, looks like someone is trying to crash our party... at least our window...&quot;
 The short man in the hat comes running over and starts shouting again. &quot;Who are you? Who sent you? Was it the Pang corporation?  Or the Prong LLC?&quot;
-[[&quot;I don&#39;t know what you&#39;re talking about!&quot; I shout back.-&gt;I&#39;m a Stranger]]
-[[&quot;That&#39;s right, I&#39;m a V.P. at Pang Incorporated, and I almost grabbed all your secrets if it weren&#39;t for your high tech alarm system!&quot;-&gt;I&#39;m a Spy]]
-[[Throw the ash up in their faces-&gt;Throw Ash]]</tw-passagedata><tw-passagedata pid="30" name=" Enter Window" tags="" position="2487,1993" size="100,100">(if: $smushFace is true)[This reminds me of the plastic tube slide on the playground when I was a kid; I always seemed to take forever to make it to the bottom, and all the kids laughed at me as I tumbled through the hole.  Here I am 15 years later and things haven&#39;t changed much; as I slide down the open window into what looks like a giant board room, there are three men standing there looking at me with annoyance, one of them with their finger on a button on the wall. There is a table in the middle of the room between them and me. As soon as I gently hit the floor, he lets go of the button and the window rotates back to its original position. &quot;Can we help you?&quot; the tall one in the middle says.](else:)[I crawl through the open window and jump onto the floor below. There are three people in the room with a giant table in the middle of the room between them and me.  They are backed up against the wall and the short one is holding a lamp shade and pointing it at me in fear. &quot;Don&#39;t make any sudden moves!&quot; he snaps.]
+[[&quot;I don&#39;t know what you&#39;re talking about!&quot; I can shout back.-&gt;I&#39;m a Stranger]], OR
+[[I can say &quot;That&#39;s right, I&#39;m a V.P. at Pang Incorporated, and I almost grabbed all your secrets if it weren&#39;t for your high tech alarm system!&quot;-&gt;I&#39;m a Spy]], OR
+[[I can throw the cigar ash up in their faces.-&gt;Throw Ash]]</tw-passagedata><tw-passagedata pid="30" name=" Enter Window" tags="" position="2487,1993" size="100,100">(if: $smushFace is true)[This reminds me of the plastic tube slide on the playground when I was a kid; I always seemed to take forever to make it to the bottom, and all the kids laughed at me as I tumbled through the hole.  Here I am 15 years later and things haven&#39;t changed much; as I slide down the open window into what looks like a giant board room, there are three men standing there looking at me with annoyance, one of them with their finger on a button on the wall. There is a table in the middle of the room between them and me. As soon as I gently hit the floor, he lets go of the button and the window rotates back to its original position. &quot;Can we help you?&quot; the tall one in the middle says.](else:)[I crawl through the open window and jump onto the floor below. There are three people in the room with a giant table in the middle of the room between them and me.  They are backed up against the wall and the short one is holding a lamp shade and pointing it at me in fear. &quot;Don&#39;t make any sudden moves!&quot; he snaps.]
 [[I raise my hands, &quot;I mean no harm&quot;-&gt;No Harm]]
 [[I try to make my eyes as wide open and crazy as possible and form a karate pose... &quot;I&#39;ve got some sudden moves right here!&quot;-&gt;Threaten]]
 [[Flip the table.-&gt;Flip Table]]</tw-passagedata><tw-passagedata pid="31" name=" Tower Roof" tags="" position="3064.333333333333,1993.6666666666665" size="100,100">(if: $hasMop is true)[I notice that the roof of the tower has a railing around it and slide my mop into the railing until it gets stuck, using it to pull myself up and over the ledge.
